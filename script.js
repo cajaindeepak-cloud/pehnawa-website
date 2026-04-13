@@ -5,10 +5,39 @@ window.addEventListener('load', () => {
     }, 600);
 });
 
-// ===== NAVBAR SCROLL =====
+// ===== COMBINED SCROLL HANDLER (perf: single listener) =====
 const navbar = document.querySelector('.navbar');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const backToTop = document.getElementById('backToTop');
+
+let ticking = false;
 window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+
+            // Navbar scroll effect
+            navbar.classList.toggle('scrolled', scrollY > 50);
+
+            // Active nav tracking
+            let current = '';
+            sections.forEach(section => {
+                if (scrollY >= section.offsetTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+
+            // Back to top visibility
+            backToTop.classList.toggle('visible', scrollY > 600);
+
+            ticking = false;
+        });
+        ticking = true;
+    }
 });
 
 // ===== HAMBURGER MENU =====
@@ -28,24 +57,7 @@ navMenu.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// ===== ACTIVE NAV TRACKING =====
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const top = section.offsetTop - 100;
-        if (window.scrollY >= top) {
-            current = section.getAttribute('id');
-        }
-    });
-    navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
-});
-
-// ===== COLLECTION FILTER =====
+// ===== COLLECTION FILTER (with smooth animation) =====
 const filterBtns = document.querySelectorAll('.filter-btn');
 const productCards = document.querySelectorAll('.product-card');
 
@@ -56,10 +68,18 @@ filterBtns.forEach(btn => {
 
         const filter = btn.dataset.filter;
         productCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
+            const match = filter === 'all' || card.dataset.category === filter;
+            if (match) {
                 card.classList.remove('hidden');
+                // Trigger reflow then fade in
+                requestAnimationFrame(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                });
             } else {
-                card.classList.add('hidden');
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => card.classList.add('hidden'), 300);
             }
         });
     });
@@ -78,10 +98,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ===== BACK TO TOP =====
-const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 600);
-});
 backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });

@@ -33,7 +33,10 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" href="favicon.ico">
-    <meta name="theme-color" content="#B8977E">
+    <meta name="theme-color" content="#D4A853">
+
+    <!-- Preload hero image for faster LCP -->
+    <link rel="preload" as="image" href="images/champagne-sequin-palace.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +101,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg">
-            <img src="images/champagne-sequin-palace.jpg" alt="Pehnawa by SS — Champagne gold sequin lehenga in elegant palace setting">
+            <img src="images/champagne-sequin-palace.jpg" alt="Pehnawa by SS — Champagne gold sequin lehenga in elegant palace setting" fetchpriority="high">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">

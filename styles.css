@@ -122,7 +122,7 @@ input:focus, select:focus, textarea:focus {
     font-size: 2.5rem;
     font-weight: 300;
     letter-spacing: 0.15em;
-    color: var(--color-accent);
+    color: var(--color-gold);
     animation: pulse 1.2s ease-in-out infinite;
 }
 @keyframes pulse {
@@ -138,7 +138,7 @@ input:focus, select:focus, textarea:focus {
     right: 0;
     z-index: 1000;
     height: var(--nav-height);
-    background: rgba(250, 248, 245, 0.92);
+    background: rgba(253, 251, 247, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid transparent;
@@ -382,14 +382,24 @@ input:focus, select:focus, textarea:focus {
     background: var(--color-surface);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: transform var(--transition), box-shadow var(--transition);
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition), box-shadow var(--transition), opacity 0.35s ease;
 }
 .product-card.hidden {
     display: none;
 }
+.product-card.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+.product-card.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
 .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+    border-color: transparent;
 }
 .product-img {
     aspect-ratio: 3/4;
@@ -866,6 +876,43 @@ input:focus, select:focus, textarea:focus {
     .footer-links {
         flex-wrap: wrap;
         gap: 1rem;
+    }
+
+    /* Floating WhatsApp — larger touch target on mobile */
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        bottom: 1.2rem;
+        right: 1.2rem;
+    }
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 4.5rem;
+        right: 1.2rem;
+        font-size: 1rem;
+    }
+
+    /* WhatsApp order button — easier to tap */
+    .btn-whatsapp-order {
+        padding: 0.5rem 1rem;
+        font-size: 0.74rem;
+    }
+
+    /* Filter bar — horizontal scroll on very small screens */
+    .filter-bar {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 0.3rem;
+    }
+    .filter-bar::-webkit-scrollbar {
+        display: none;
+    }
+    .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 }
 
