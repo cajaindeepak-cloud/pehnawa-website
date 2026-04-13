@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Utility scripts (not part of the website)
+split_images.py
+serve.py
+server.py
+
+# Source composite images (already split)
+images/*.png
+
+# IDE
+.vscode/
+.idea/
+
+# Node (if added later)
+node_modules/

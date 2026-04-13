@@ -1,0 +1,161 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Netlify Identity for authentication
+site_url: https://pehnawabyss.com
+display_url: https://pehnawabyss.com
+
+# Media (images) stored in /images folder
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Logo in CMS sidebar
+logo_url: "https://pehnawabyss.com/favicon.svg"
+
+collections:
+  # ============================================
+  # PRODUCTS — Add, edit, delete products
+  # ============================================
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "_products"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}} — {{category}}"
+    sortable_fields: ["name", "category", "price"]
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        choose_url: false
+        media_folder: "/images/uploads"
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Party Wear", value: "party" }
+          - { label: "Wedding Wear", value: "wedding" }
+          - { label: "Daily Wear", value: "daily" }
+
+      - label: "Price (in Rs.)"
+        name: "price"
+        widget: "string"
+        required: false
+        hint: "e.g. Rs. 12,500 or On Request"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Short description of the product (1-2 lines)"
+
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        hint: "Show this product in the 'Our Favourites' section?"
+
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: true
+
+  # ============================================
+  # SITE SETTINGS — Hero, About, Contact
+  # ============================================
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      # --- Hero Banner ---
+      - name: "hero"
+        label: "Hero Banner"
+        file: "_data/hero.json"
+        fields:
+          - label: "Hero Image"
+            name: "image"
+            widget: "image"
+            choose_url: false
+            media_folder: "/images/uploads"
+
+          - label: "Tagline"
+            name: "tagline"
+            widget: "string"
+            default: "Handcrafted with Love"
+
+          - label: "Headline"
+            name: "headline"
+            widget: "string"
+            default: "Pehnawa by SS"
+
+          - label: "Subtitle"
+            name: "subtitle"
+            widget: "text"
+            default: "Traditional elegance meets modern grace"
+
+          - label: "Button Text"
+            name: "button_text"
+            widget: "string"
+            default: "Explore Collections"
+
+      # --- About Us ---
+      - name: "about"
+        label: "About Us"
+        file: "_data/about.json"
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            default: "Our Story"
+
+          - label: "Lead Paragraph"
+            name: "lead"
+            widget: "text"
+            default: "Pehnawa by SS was born from a shared passion for Indian textiles and a desire to make exquisite traditional wear accessible to every woman."
+
+          - label: "Full Story"
+            name: "body"
+            widget: "markdown"
+
+          - label: "Image 1"
+            name: "image1"
+            widget: "image"
+            choose_url: false
+            media_folder: "/images/uploads"
+
+          - label: "Image 2"
+            name: "image2"
+            widget: "image"
+            choose_url: false
+            media_folder: "/images/uploads"
+
+      # --- Contact Info ---
+      - name: "contact"
+        label: "Contact Info"
+        file: "_data/contact.json"
+        fields:
+          - label: "WhatsApp Number (with country code)"
+            name: "whatsapp"
+            widget: "string"
+            default: "919323331444"
+
+          - label: "Instagram Handle"
+            name: "instagram"
+            widget: "string"
+            default: "@pehnawabyss"
+
+          - label: "Instagram URL"
+            name: "instagram_url"
+            widget: "string"
+            default: "https://www.instagram.com/pehnawabyss/"
+
+          - label: "Email"
+            name: "email"
+            widget: "string"
+            required: false
