@@ -17,6 +17,9 @@ server.py
 # Source composite images (already split)
 images/*.png
 
+# Original WhatsApp source photos
+images/WhatsApp Image*
+
 # IDE
 .vscode/
 .idea/

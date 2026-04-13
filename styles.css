@@ -1,14 +1,16 @@
-/* ===== VARIABLES — SOFT NEUTRAL THEME ===== */
+/* ===== VARIABLES — TRADITIONAL MEETS MODERN ===== */
 :root {
-    --color-bg: #FAF8F5;
-    --color-bg-alt: #F3EDE7;
+    --color-bg: #FDFBF7;
+    --color-bg-alt: #F5EFE6;
     --color-surface: #FFFFFF;
-    --color-text: #2C2420;
-    --color-text-light: #7A6E65;
-    --color-accent: #B8977E;
-    --color-accent-dark: #96775E;
-    --color-border: #E8E0D8;
-    --color-overlay: rgba(44, 36, 32, 0.55);
+    --color-text: #1A1412;
+    --color-text-light: #6B5D52;
+    --color-accent: #C4956A;
+    --color-accent-dark: #A67B50;
+    --color-border: #E6DACE;
+    --color-overlay: rgba(26, 20, 18, 0.5);
+    --color-gold: #D4A853;
+    --color-deep: #3D2B1F;
 
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Montserrat', -apple-system, sans-serif;
@@ -64,6 +66,16 @@ input:focus, select:focus, textarea:focus {
     letter-spacing: 0.02em;
     margin-bottom: 0.5rem;
     color: var(--color-text);
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--color-gold);
+    margin: 0.6rem auto 0;
 }
 .section-subtitle {
     font-size: 0.95rem;
@@ -155,7 +167,7 @@ input:focus, select:focus, textarea:focus {
 .nav-logo span {
     font-weight: 300;
     font-style: italic;
-    color: var(--color-accent);
+    color: var(--color-gold);
 }
 .nav-menu {
     display: flex;
@@ -233,9 +245,9 @@ input:focus, select:focus, textarea:focus {
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(250, 248, 245, 0.3) 0%,
-        var(--color-overlay) 60%,
-        rgba(44, 36, 32, 0.8) 100%
+        rgba(26, 20, 18, 0.1) 0%,
+        rgba(26, 20, 18, 0.35) 40%,
+        rgba(26, 20, 18, 0.75) 100%
     );
 }
 .hero-content {
@@ -247,10 +259,14 @@ input:focus, select:focus, textarea:focus {
 .hero-tag {
     font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-gold);
     margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid rgba(212, 168, 83, 0.4);
+    border-radius: 2px;
 }
 .hero h1 {
     font-family: var(--font-display);
@@ -482,6 +498,9 @@ input:focus, select:focus, textarea:focus {
 .about-text .section-title {
     text-align: left;
 }
+.about-text .section-title::after {
+    margin: 0.6rem 0 0;
+}
 .about-lead {
     font-family: var(--font-display);
     font-size: 1.25rem;
@@ -598,7 +617,7 @@ input:focus, select:focus, textarea:focus {
 
 /* ===== FOOTER ===== */
 .footer {
-    background: var(--color-text);
+    background: var(--color-deep);
     color: rgba(255,255,255,0.7);
     padding: 3rem 0 1.5rem;
 }
@@ -618,7 +637,7 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 0.3rem;
 }
 .footer-brand h3 em {
-    color: var(--color-accent);
+    color: var(--color-gold);
 }
 .footer-brand p {
     font-size: 0.85rem;
