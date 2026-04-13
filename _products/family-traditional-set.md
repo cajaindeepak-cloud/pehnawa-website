@@ -1,9 +1,9 @@
 ---
 name: Family Traditional Set
 image: /images/family-traditional.jpg
-category: daily
+category: wedding
 price: On Request
-description: Traditional family wear set for festive occasions
+description: Traditional family wedding outfit set
 featured: false
 published: true
 ---
