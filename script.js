@@ -107,7 +107,7 @@ document.querySelectorAll('.btn-whatsapp-order').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         const product = btn.dataset.product;
-        const text = encodeURIComponent(`Hi! I'm interested in ordering the "${product}" from pehnawabyss.com. Please share details.`);
+        const text = encodeURIComponent(`Hello, I'm interested in the "${product}" from pehnawabyss.com. Could you share pricing and availability?`);
         window.open(`https://wa.me/919323331444?text=${text}`, '_blank');
     });
 });
