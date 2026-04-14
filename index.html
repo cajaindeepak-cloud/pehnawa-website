@@ -575,18 +575,5 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
 
     <script src="script.js" defer></script>
-    <!-- Netlify Identity redirect (needed for CMS login) -->
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script>
 </body>
 </html>

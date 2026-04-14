@@ -1,8 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: cajaindeepak-cloud/pehnawa-website
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
-# Netlify Identity for authentication
 site_url: https://pehnawabyss.com
 display_url: https://pehnawabyss.com
 
