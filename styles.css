@@ -319,7 +319,7 @@ input:focus, select:focus, textarea:focus {
 .featured-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr 1fr;
     gap: 0.75rem;
     max-width: 950px;
     margin: 0 auto;
@@ -329,6 +329,7 @@ input:focus, select:focus, textarea:focus {
     overflow: hidden;
     border-radius: var(--radius);
     background: var(--color-bg-alt);
+    min-height: 260px;
 }
 .featured-card--tall {
     grid-row: span 2;
@@ -408,6 +409,8 @@ input:focus, select:focus, textarea:focus {
     overflow: hidden;
     border: 1px solid rgba(230,218,206,0.5);
     transition: transform var(--transition), box-shadow var(--transition), opacity 0.35s ease;
+    display: flex;
+    flex-direction: column;
 }
 .product-card.hidden {
     display: none;
@@ -441,6 +444,9 @@ input:focus, select:focus, textarea:focus {
 }
 .product-info {
     padding: 1.2rem 1.3rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 .product-info h3 {
     font-family: var(--font-display);
@@ -448,6 +454,9 @@ input:focus, select:focus, textarea:focus {
     font-weight: 400;
     margin-bottom: 0.25rem;
     letter-spacing: 0.01em;
+    min-height: 2.4em;
+    display: flex;
+    align-items: flex-start;
 }
 .product-info p {
     font-size: 0.68rem;
@@ -467,10 +476,11 @@ input:focus, select:focus, textarea:focus {
     gap: 3px;
     overflow: hidden;
     margin-bottom: 3rem;
+    height: 240px;
 }
 .craft-img {
     flex: 1;
-    min-height: 220px;
+    height: 100%;
     overflow: hidden;
 }
 .craft-img img {
@@ -771,9 +781,10 @@ input:focus, select:focus, textarea:focus {
 .btn-whatsapp-order {
     display: inline-flex;
     align-items: center;
+    align-self: flex-start;
     gap: 0.5rem;
-    margin-top: 0.8rem;
-    padding: 0.5rem 1rem;
+    margin-top: auto;
+    padding: 0.55rem 1.1rem;
     background: var(--color-deep);
     color: #fff;
     border-radius: 0;
@@ -904,10 +915,20 @@ input:focus, select:focus, textarea:focus {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
     }
+    .product-info h3 {
+        font-size: 1.05rem;
+        min-height: 2.2em;
+    }
+    .product-info p {
+        font-size: 0.62rem;
+    }
+    .featured-card {
+        min-height: 200px;
+    }
 
     /* Craft banner */
-    .craft-grid { flex-direction: column; }
-    .craft-img { min-height: 140px; }
+    .craft-grid { flex-direction: column; height: auto; }
+    .craft-img { height: 160px; }
 
     /* About */
     .about { padding: 4rem 0; }
@@ -982,8 +1003,18 @@ input:focus, select:focus, textarea:focus {
     .featured-grid {
         grid-template-columns: 1fr;
     }
+    .featured-card {
+        min-height: 280px;
+    }
     .product-grid {
         grid-template-columns: 1fr;
+    }
+    .product-info h3 {
+        min-height: auto;
+        font-size: 1.15rem;
+    }
+    .product-info p {
+        font-size: 0.68rem;
     }
     .filter-bar {
         gap: 0.5rem;
